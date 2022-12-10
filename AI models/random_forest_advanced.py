@@ -4,7 +4,7 @@ import sys
 sys.path.append('../')
  
 # importing
-import preprocessing as ppc
+from preprocessing import Preprocessing as ppc
 
 #from .. import preprocessing
 
@@ -48,7 +48,7 @@ def save_model(model, filename='model.sav'):
 
 
 
-df = ppc.load_data("../Wines.csv")
+df = ppc.load_data()
 df = ppc.generate_group(df)
 
 X_train, X_test, y_train, y_test = ppc.split_data(df)

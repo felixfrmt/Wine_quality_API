@@ -9,10 +9,18 @@ import sys
 # setting path
 sys.path.append('../')
 
-import preprocessing as ppc
+from preprocessing import Preprocessing as ppc
 
 
-df = ppc.load_data(path='../Wines.csv', extension='csv', plot=False)
+
+# class NN:
+
+# 	def __init__(
+
+
+
+
+df = ppc.load_data()
 
 X_train, X_test, y_train, y_test = ppc.split_data(df, y="quality")
 
