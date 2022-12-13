@@ -18,13 +18,14 @@ import pickle
 
 class Random_Forest:
 
-	def __init__(self, X_train, y_train, load_model_name=None):
+	def __init__(self, X_train, y_train, X_test, y_test, load_model_name="model.sav"):
 		if load_model_name :
 			self.model = self.choose_model(X_train, y_train, path="./models_random_forest/", model_name=load_model_name)
 		else:
 			self.model = self.train_model(X_train, y_train)
 			save_model(self.model, "retrained_model.sav")	
 
+			self.model.test_model(X_test, y_test)
 
 
 	def load_model(self, path='./models_random_forest/model.sav'):
@@ -63,8 +64,8 @@ class Random_Forest:
 		print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
 		return y_pred
 
-	def save_model(self, filename='model.sav'):
-		path = "./models_random_forest/" + filename
+	def save_model(self, filename='model_random_forest.sav'):
+		path = "./AI models/models/" + filename
 		with open(path, 'wb') as files:
 			pickle.dump(self.model, files)
 
@@ -72,14 +73,15 @@ class Random_Forest:
 
 
 
-df = ppc.load_data()
+# df = ppc.load_data()
 
-X_train, X_test, y_train, y_test = ppc.split_data(df)
+# X_train, X_test, y_train, y_test = ppc.split_data(df)
 
-model = Random_Forest(X_train, y_train, load_model_name="model.sav")
+# model = Random_Forest(X_train, y_train, X_test, y_test, load_model_name="model.sav")
 
-# model = choose_model(X_train, y_train)
+# # model = choose_model(X_train, y_train)
 
-y_pred = model.test_model(X_test, y_test)
+# y_pred = model.test_model(X_test, y_test)
 
-model.save_model()
+# model.save_model()
+
