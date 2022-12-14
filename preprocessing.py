@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 class Preprocessing:
 
 	def load_data(path='./data/Wines.csv', extension='csv', plot=False):
-		print(path) 
+		print(path)
 		if extension == "xlsx":
 			df = pd.read_excel(path, header=0)
 		elif extension == "csv":
